@@ -1,0 +1,23 @@
+<p>始まるよったら始まるよ</p>
+
+<% @split_member_array.each do |group| %>
+    <% group.each do |member| %>
+        <p><%= member[:number] %></p>
+        <p><%= member[:name] %></p>
+
+        <% if false %>
+            <% case member[:experience] %>
+            <% when 2 then %>
+                <p>経験者</p>
+            <% when 1 then %>
+                <p>ルール把握</p>
+            <% else %>
+                <p>未経験</p>
+            <% end %>
+        <% end %>
+
+    <% end %>
+    <p>==== 区切り ===</p>
+<% end %>
+
+<%= link_to "戻る", setting_path %>

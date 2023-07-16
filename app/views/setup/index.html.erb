@@ -1,1 +1,18 @@
-<p>新しいページだよ。</p>
+<p>コート数と参加者数を入力してください。</p>
+
+<%= form_tag(setting_path, method: :get) do %>
+
+  <p>コートの数は？</p>
+  <%= select_tag 'coat', options_for_select({'1面': 1, '2面': 2, '3面': 3}, 1) %>
+
+  <p>参加人数は？</p>
+  <%= number_field_tag 'member_count', nil, in: 1...30%>
+
+  <p>何回戦やりますか？</p>
+  <%= number_field_tag 'number_of_rounds', nil, in: 1...30%>
+  
+  <%= submit_tag '次へ' %>
+<% end %>
+
+<%= link_to "戻る", root_path %>
+
