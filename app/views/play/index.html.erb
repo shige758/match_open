@@ -1,23 +1,37 @@
-<p>始まるよったら始まるよ</p>
+<h1>組み合わせを発表します。</h1>
 
-<% @split_member_array.each do |group| %>
-    <% group.each do |member| %>
-        <p><%= member[:number] %></p>
-        <p><%= member[:name] %></p>
+<% @split_member_array.each_with_index do |group, i| %>
+  <div style="margin-bottom: 10px; border: 1px solid; padding: 10px;">
+    <h3><%= i+1 %>戦目</h3>
+    <% group.each_with_index do |member, i| %>
+      <% if i == 0 || i == 1 %>
+        <div style="display:flex; background-color:#FFA07A;">
+          <p><%= member[:number] %>:</p>
+          <p><%= member[:name] %></p>
+        </div>
+      <% else %>
+        <div style="display:flex; background-color:#AFEEEE;">
+          <p><%= member[:number] %>:</p>
+          <p><%= member[:name] %></p>
+        </div>
+      <% end %>
+     
 
-        <% if false %>
-            <% case member[:experience] %>
-            <% when 2 then %>
-                <p>経験者</p>
-            <% when 1 then %>
-                <p>ルール把握</p>
-            <% else %>
-                <p>未経験</p>
-            <% end %>
+      <% if false %>
+        <% case member[:experience] %>
+        <% when 2 then %>
+            <p>経験者</p>
+        <% when 1 then %>
+            <p>ルール把握</p>
+        <% else %>
+            <p>未経験</p>
         <% end %>
+      <% end %>
 
     <% end %>
-    <p>==== 区切り ===</p>
+  </div>
 <% end %>
 
+
 <%= link_to "戻る", setting_path %>
+<%= link_to "TOPに戻る", root_path %>

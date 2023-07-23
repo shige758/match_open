@@ -1,20 +1,30 @@
-<p>参加者の情報を入力してください。</p>
+<h1>参加者の情報を入力してください。</h1>
 
 <%= form_tag(play_path, method: :get) do %>
 
   <%= hidden_field_tag :coat, @number_of_courts %>
   <%= hidden_field_tag :round, @number_of_rounds %>
 
-  <% for i in 1..@member_count.to_i %>
-    <p><%= i %>人目の情報</p>
-    <%= hidden_field_tag "info[][number]", i %>
-    <p>名前</p>
-    <%= text_field_tag "info[][name]" %>
-    <p>バドミントン経験</p>
-    <%= select_tag 'info[][experience]', options_for_select({'未経験': 0, 'ルール把握': 1, '経験者': 2}, 0) %>
-  <% end  %>
-  
-  <%= submit_tag '始める' %>
+  <div class="form">
+    <div class="member_info">
+      <% for i in 1..@member_count.to_i %>
+        <div style="margin-top:10px; border:1px solid; padding: 5px">
+          <p><%= i %>人目の情報</p>
+          <%= hidden_field_tag "info[][number]", i %>
+          <p>名前</p>
+          <%= text_field_tag "info[][name]" %>
+          <p>バドミントン経験</p>
+          <%= select_tag 'info[][experience]', options_for_select({'未経験': 0, 'ルール把握': 1, '経験者': 2}, 0) %>
+        </div>
+      <% end  %>
+    </div>
+    <div style="margin-top:10px">
+      <%= submit_tag '始める' %>
+    </div>
+  </div>
+
 <% end %>
 
-<%= link_to "戻る", setup_path %>
+<div style="margin-top:10px">
+  <%= link_to "戻る", setup_path %>
+</div>
